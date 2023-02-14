@@ -25,7 +25,7 @@ app.get('/', async (req, res) => {
       setTimeout: ms('0s'),
     });
 
-    await page.waitForTimeout('2ms');
+    await page.waitForTimeout('5ms');
 
     await page.waitForSelector('span[class^="top-card__subline-item"');
     const followersCount = await page.$eval('span[class^="top-card__subline-item"', (el) => el.innerText);
