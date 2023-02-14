@@ -4,7 +4,7 @@ const app = express();
 const puppeteer = require('puppeteer');
 
 function removeFollowers(str) {
-  return str.replace(/\s*followers\s*/, '');
+  return str.replace(/\s*K\s*followers\s*/, '');
 }
 
 let browser;
@@ -32,7 +32,7 @@ app.get('/', async (req, res) => {
     const followersCount = await page.$eval('span[class^="top-card__subline-item"', (el) => el.innerText);
 
     res.send({
-      "followers": removeFollowers(followersCount),
+      "followers": Number(removeFollowers(LinkedInFollowers)) * 1000,
     });
   } catch (err) {
     console.error(err);
